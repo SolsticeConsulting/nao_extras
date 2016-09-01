@@ -1,0 +1,9 @@
+<!-- launches only joystick-related nodes for Nao -->
+
+<launch>
+  <node pkg="nao_teleop" type="teleop_nao_joy" name="teleop_nao_joy" output="screen" />
+  <node pkg="joy" type="joy_node" name="joy_node">
+  	<param name="joy_node/dev" value="/dev/input/js1" />
+  </node>
+  <node name="joystick_listener" pkg="nao_teleop" type="joystick_listener.py" respawn="true" />
+</launch>
