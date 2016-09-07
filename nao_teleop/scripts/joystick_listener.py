@@ -4,7 +4,7 @@ from std_msgs.msg import String
 from sensor_msgs.msg import Joy
 from naoqi import ALProxy
 
-memory = ALProxy("ALMemory", "sancarlos13.local", 9559)
+memory = ALProxy("ALMemory", "pepper.local", 9559)
 
 def callback(data):
     memory.raiseEvent("onJoystickButton", data.buttons)
