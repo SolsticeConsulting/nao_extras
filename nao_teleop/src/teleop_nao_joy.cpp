@@ -179,10 +179,11 @@ void TeleopNaoJoy::joyCallback(const Joy::ConstPtr& joy){
   } else{
     if (buttonPressed(m_modifyHeadBtn, joy)){
       // move head
+      std::cout << "modify head button pressed" << std::endl;
+      m_headAngles.joint_angles[0] = m_headAngles.joint_angles[1] = 0.0f;
       m_headAngles.header.stamp = ros::Time::now();
-      m_headAngles.relative = 1;
-      m_headAngles.joint_angles[0] = joy->axes[m_turnAxis];
-      m_headAngles.joint_angles[1] = joy->axes[m_xAxis];
+      m_headAngles.relative = 0;
+      m_headPub.publish(m_headAngles);
 
     } else {
       // stop head:
